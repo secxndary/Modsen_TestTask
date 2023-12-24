@@ -6,29 +6,29 @@ using Shared.DataTransferObjects.UpdateDtos;
 
 namespace Services.UserServicesImpl;
 
-public sealed class BookService(IRepositoryManager _repository) : IBookService
+public class GenreService(IRepositoryManager _repository) : IGenreService
 {
-    public async Task<IEnumerable<BookDto>> GetAllBooksAsync()
+    public async Task<IEnumerable<GenreDto>> GetAllGenresAsync()
     {
         throw new NotImplementedException();
     }
 
-    public async Task<BookDto> GetBookAsync(Guid id)
+    public async Task<GenreDto> GetGenreAsync(Guid id)
     {
         throw new NotImplementedException();
     }
 
-    public async Task<BookDto> CreateBookAsync(BookForCreationDto book)
+    public async Task<GenreDto> CreateGenreAsync(GenreForCreationDto genre)
     {
         throw new NotImplementedException();
     }
 
-    public async Task<BookDto> UpdateBookAsync(BookForUpdateDto book)
+    public async Task<GenreDto> UpdateGenreAsync(GenreForUpdateDto genre)
     {
         throw new NotImplementedException();
     }
 
-    public async Task DeleteBookAsync(Guid id)
+    public async Task DeleteGenreAsync(Guid id)
     {
         throw new NotImplementedException();
     }
