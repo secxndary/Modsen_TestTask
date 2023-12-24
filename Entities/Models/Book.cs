@@ -8,9 +8,8 @@ public class Book
     public DateTime BorrowDateStart { get; set; }
     public DateTime BorrowDateEnd { get; set; }
     
-    public Guid GenreId { get; set; }
-    public Genre? Genre { get; set; }
-    
-    public Guid AuthorId { get; set; }
+    public Guid? AuthorId { get; set; }
     public Author? Author { get; set; }
+    
+    public IEnumerable<Genre>? Genres { get; set; }
 }
