@@ -1,9 +1,16 @@
+using BookLibrary.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.ConfigureIisIntegration();
+builder.Services.ConfigureRepositoryManager();
+builder.Services.ConfigureSqlContext(builder.Configuration);
+
 var app = builder.Build();
+
 
 if (app.Environment.IsDevelopment())
 {
@@ -12,6 +19,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
 
 var summaries = new[]
 {
