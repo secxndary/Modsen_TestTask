@@ -62,4 +62,18 @@ public sealed class BookService(IRepositoryManager _repository, IMapper _mapper)
             throw new BookNotFoundException(id);
         return book;
     }
+
+    private async Task CheckIfAuthorExists(Guid authorId)
+    {
+        var author = await _repository.Author.GetAuthorAsync(authorId, trackChanges: false);
+        if (author is null)
+            throw new AuthorNotFoundException(authorId);
+    }
+
+    private async Task CheckIfGenreExists(Guid genreId)
+    {
+        var genre = await _repository.Genre.GetGenreAsync(genreId, trackChanges: false);
+        if (genre is null)
+            throw new AuthorNotFoundException(genreId);
+    }
 }

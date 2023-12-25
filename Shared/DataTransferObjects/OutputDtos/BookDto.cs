@@ -7,4 +7,5 @@ public record BookDto
     public string? Title { get; set; }
     public DateTime BorrowDateStart { get; set; }
     public DateTime BorrowDateEnd { get; set; }
+    public Guid? AuthorId { get; set; }
 }
