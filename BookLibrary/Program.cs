@@ -7,10 +7,11 @@ using NLog;
 var builder = WebApplication.CreateBuilder(args);
 LogManager.Setup().LoadConfigurationFromFile(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
 
+builder.Services.ConfigureCors();
 builder.Services.ConfigureIisIntegration();
-builder.Services.ConfigureLoggerService();
-
 builder.Services.ConfigureSqlContext(builder.Configuration);
+
+builder.Services.ConfigureLoggerManager();
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
 
@@ -46,6 +47,7 @@ else
     app.UseHsts();
 
 app.UseHttpsRedirection();
+app.UseCors("CorsPolicy");
 app.MapControllers();
 
 app.Run();
