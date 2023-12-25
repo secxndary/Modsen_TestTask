@@ -15,7 +15,7 @@ public class MappingProfile : Profile
             .ForMember
             (
                 dest => dest.Name,
-                opt => opt.MapFrom(src => string.Concat(src.FirstName, " ", src.LastName))
+                opt => opt.MapFrom(src => string.Join(' ', src.FirstName, src.LastName))
             );
         CreateMap<Genre, GenreDto>();
 
