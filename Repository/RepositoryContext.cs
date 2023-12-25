@@ -15,7 +15,8 @@ public class RepositoryContext(DbContextOptions options) : IdentityDbContext<Use
         modelBuilder
             .ApplyConfiguration(new BookConfiguration())
             .ApplyConfiguration(new AuthorConfiguration())
-            .ApplyConfiguration(new GenreConfiguration());
+            .ApplyConfiguration(new GenreConfiguration())
+            .ApplyConfiguration(new BookGenreConfiguration());
     }
     
     public DbSet<Book>? Books { get; set; }
