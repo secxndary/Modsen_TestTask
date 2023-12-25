@@ -9,6 +9,6 @@ public interface IGenreService
     Task<IEnumerable<GenreDto>> GetAllGenresAsync();   // TODO add GenreParameters
     Task<GenreDto> GetGenreAsync(Guid id);
     Task<GenreDto> CreateGenreAsync(GenreForCreationDto genre);
-    Task<GenreDto> UpdateGenreAsync(GenreForUpdateDto genre);
+    Task<GenreDto> UpdateGenreAsync(Guid id, GenreForUpdateDto genreForUpdate);
     Task DeleteGenreAsync(Guid id);
 }

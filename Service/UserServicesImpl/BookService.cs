@@ -1,5 +1,7 @@
 using AutoMapper;
 using Contracts.Repositories;
+using Entities.Exceptions.NotFound;
+using Entities.Models;
 using Service.Contracts.UserServices;
 using Shared.DataTransferObjects.InputDtos;
 using Shared.DataTransferObjects.OutputDtos;
@@ -11,26 +13,53 @@ public sealed class BookService(IRepositoryManager _repository, IMapper _mapper)
 {
     public async Task<IEnumerable<BookDto>> GetAllBooksAsync()
     {
-        throw new NotImplementedException();
+        var books = await _repository.Book.GetAllBooksAsync(trackChanges: false);
+        var booksDto = _mapper.Map<IEnumerable<BookDto>>(books);
+        return booksDto;
     }
 
     public async Task<BookDto> GetBookAsync(Guid id)
     {
-        throw new NotImplementedException();
+        var book = await GetBookAndCheckIfItExists(id, trackChanges: false);
+        var bookDto = _mapper.Map<BookDto>(book);
+        return bookDto;
     }
 
     public async Task<BookDto> CreateBookAsync(BookForCreationDto book)
     {
-        throw new NotImplementedException();
+        var bookEntity = _mapper.Map<Book>(book);
+
+        _repository.Book.CreateBook(bookEntity);
+        await _repository.SaveAsync();
+
+        var bookToReturn = _mapper.Map<BookDto>(bookEntity);
+        return bookToReturn;
     }
 
-    public async Task<BookDto> UpdateBookAsync(BookForUpdateDto book)
+    public async Task<BookDto> UpdateBookAsync(Guid id, BookForUpdateDto bookForUpdate)
     {
-        throw new NotImplementedException();
+        var bookEntity = GetBookAndCheckIfItExists(id, trackChanges: true);
+
+        await _mapper.Map(bookForUpdate, bookEntity);
+        await _repository.SaveAsync();
+
+        var bookToReturn = _mapper.Map<BookDto>(bookEntity);
+        return bookToReturn;
     }
 
     public async Task DeleteBookAsync(Guid id)
     {
-        throw new NotImplementedException();
+        var book = await GetBookAndCheckIfItExists(id, trackChanges: false);
+        _repository.Book.DeleteBook(book);
+        await _repository.SaveAsync();
+    }
+
+
+    private async Task<Book> GetBookAndCheckIfItExists(Guid id, bool trackChanges)
+    {
+        var book = await _repository.Book.GetBookAsync(id, trackChanges);
+        if (book is null)
+            throw new BookNotFoundException(id);
+        return book;
     }
 }

@@ -9,6 +9,6 @@ public interface IAuthorService
     Task<IEnumerable<AuthorDto>> GetAllAuthorsAsync();   // TODO add AuthorParameters
     Task<AuthorDto> GetAuthorAsync(Guid id);
     Task<AuthorDto> CreateAuthorAsync(AuthorForCreationDto author);
-    Task<AuthorDto> UpdateAuthorAsync(AuthorForUpdateDto author);
+    Task<AuthorDto> UpdateAuthorAsync(Guid id, AuthorForUpdateDto authorForUpdate);
     Task DeleteAuthorAsync(Guid id);
 }
