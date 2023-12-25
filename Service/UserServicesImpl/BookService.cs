@@ -1,3 +1,4 @@
+using AutoMapper;
 using Contracts.Repositories;
 using Service.Contracts.UserServices;
 using Shared.DataTransferObjects.InputDtos;
@@ -6,7 +7,7 @@ using Shared.DataTransferObjects.UpdateDtos;
 
 namespace Services.UserServicesImpl;
 
-public sealed class BookService(IRepositoryManager _repository) : IBookService
+public sealed class BookService(IRepositoryManager _repository, IMapper _mapper) : IBookService
 {
     public async Task<IEnumerable<BookDto>> GetAllBooksAsync()
     {

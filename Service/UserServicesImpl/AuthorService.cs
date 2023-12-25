@@ -1,3 +1,4 @@
+using AutoMapper;
 using Contracts.Repositories;
 using Service.Contracts.UserServices;
 using Shared.DataTransferObjects.InputDtos;
@@ -6,7 +7,7 @@ using Shared.DataTransferObjects.UpdateDtos;
 
 namespace Services.UserServicesImpl;
 
-public class AuthorService(IRepositoryManager _repository) : IAuthorService
+public class AuthorService(IRepositoryManager _repository, IMapper _mapper) : IAuthorService
 {
     public async Task<IEnumerable<AuthorDto>> GetAllAuthorsAsync()
     {

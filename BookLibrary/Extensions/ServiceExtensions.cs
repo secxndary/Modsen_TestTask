@@ -11,7 +11,7 @@ namespace BookLibrary.Extensions;
 public static class ServiceExtensions
 {
     public static void ConfigureIisIntegration(this IServiceCollection services) =>
-        services.Configure<IISOptions>(options => { });
+        services.Configure<IISOptions>(_ => { });
 
     public static void ConfigureLoggerService(this IServiceCollection services) =>
         services.AddSingleton<ILoggerManager, LoggerManager>();

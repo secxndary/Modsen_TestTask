@@ -1,3 +1,4 @@
+using AutoMapper;
 using Contracts.Repositories;
 using Service.Contracts.UserServices;
 using Shared.DataTransferObjects.InputDtos;
@@ -6,7 +7,7 @@ using Shared.DataTransferObjects.UpdateDtos;
 
 namespace Services.UserServicesImpl;
 
-public class GenreService(IRepositoryManager _repository) : IGenreService
+public class GenreService(IRepositoryManager _repository, IMapper _mapper) : IGenreService
 {
     public async Task<IEnumerable<GenreDto>> GetAllGenresAsync()
     {
