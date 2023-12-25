@@ -1,12 +1,18 @@
 using BookLibrary.Extensions;
+using NLog;
 
 var builder = WebApplication.CreateBuilder(args);
+LogManager.Setup().LoadConfigurationFromFile(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.ConfigureIisIntegration();
+builder.Services.ConfigureLoggerService();
+
 builder.Services.ConfigureRepositoryManager();
+builder.Services.ConfigureServiceManager();
+
 builder.Services.ConfigureSqlContext(builder.Configuration);
 
 var app = builder.Build();
