@@ -14,7 +14,7 @@ public class RepositoryContextFactory : IDesignTimeDbContextFactory<RepositoryCo
             .Build();
 
         var builder = new DbContextOptionsBuilder<RepositoryContext>()
-            .UseNpgsql(configuration.GetConnectionString("postgresConnection"),
+            .UseNpgsql(configuration.GetConnectionString("PostgresConnection"),
                 b => b.MigrationsAssembly("BookLibrary"));
 
         return new RepositoryContext(builder.Options);
