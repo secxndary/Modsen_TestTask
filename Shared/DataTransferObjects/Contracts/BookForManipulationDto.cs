@@ -6,5 +6,5 @@ public record BookForManipulationDto
     public string? Title { get; init; }
     public DateTime BorrowDateStart { get; init; }
     public DateTime BorrowDateEnd { get; init; }
-    public Guid? AuthorId { get; init; }
+    public Guid AuthorId { get; init; }    // TODO add Genre to Book dto
 }

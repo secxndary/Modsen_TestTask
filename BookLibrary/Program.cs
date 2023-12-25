@@ -31,11 +31,6 @@ var app = builder.Build();
 
 
 var logger = app.Services.GetRequiredService<ILoggerManager>();
-var prefix = app.Configuration.GetSection("Prefix").Value;
-
-app.UseMiddleware<GlobalRoutePrefixMiddleware>(prefix);
-app.UsePathBase(new PathString(prefix));
-
 app.ConfigureExceptionHandler(logger);
 
 if (app.Environment.IsDevelopment())
