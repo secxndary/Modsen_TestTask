@@ -7,19 +7,19 @@ using Shared.DataTransferObjects.OutputDtos;
 
 namespace Application.Handlers.Books;
 
-public sealed class CreateBookHandler(IRepositoryManager _repository, IMapper _mapper)
-    : BookHandlerBase(_repository), IRequestHandler<CreateBookCommand, BookDto>
+public sealed class CreateBookHandler(IRepositoryManager repository, IMapper mapper)
+    : BaseBookHandler(repository), IRequestHandler<CreateBookCommand, BookDto>
 {
     public async Task<BookDto> Handle(CreateBookCommand request, CancellationToken cancellationToken)
     {
         await CheckIfAuthorExists(request.Book.AuthorId);   // TODO CheckIfGenreExists
 
-        var bookEntity = _mapper.Map<Book>(request.Book);
+        var bookEntity = mapper.Map<Book>(request.Book);
 
-        _repository.Book.CreateBook(bookEntity);
-        await _repository.SaveAsync();
+        repository.Book.CreateBook(bookEntity);
+        await repository.SaveAsync();
 
-        var bookToReturn = _mapper.Map<BookDto>(bookEntity);
+        var bookToReturn = mapper.Map<BookDto>(bookEntity);
         return bookToReturn;
     }
 }

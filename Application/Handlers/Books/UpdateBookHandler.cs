@@ -6,18 +6,18 @@ using Shared.DataTransferObjects.OutputDtos;
 
 namespace Application.Handlers.Books;
 
-public sealed class UpdateBookHandler(IRepositoryManager _repository, IMapper _mapper)
-    : BookHandlerBase(_repository), IRequestHandler<UpdateBookCommand, BookDto>
+public sealed class UpdateBookHandler(IRepositoryManager repository, IMapper mapper)
+    : BaseBookHandler(repository), IRequestHandler<UpdateBookCommand, BookDto>
 {
     public async Task<BookDto> Handle(UpdateBookCommand request, CancellationToken cancellationToken)
     {
         await CheckIfAuthorExists(request.BookForUpdate.AuthorId);
         var bookEntity = await GetBookAndCheckIfItExists(request.Id, trackChanges: true);
 
-        _mapper.Map(request.BookForUpdate, bookEntity);
-        await _repository.SaveAsync();
+        mapper.Map(request.BookForUpdate, bookEntity);
+        await repository.SaveAsync();
 
-        var bookToReturn = _mapper.Map<BookDto>(bookEntity);
+        var bookToReturn = mapper.Map<BookDto>(bookEntity);
         return bookToReturn;
     }
 }

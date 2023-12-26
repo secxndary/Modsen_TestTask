@@ -4,15 +4,15 @@ using MediatR;
 
 namespace Application.Handlers.Books;
 
-public sealed class DeleteBookHandler(IRepositoryManager _repository)
-    : BookHandlerBase(_repository), IRequestHandler<DeleteBookCommand, Unit>
+public sealed class DeleteBookHandler(IRepositoryManager repository)
+    : BaseBookHandler(repository), IRequestHandler<DeleteBookCommand, Unit>
 {
     public async Task<Unit> Handle(DeleteBookCommand request, CancellationToken cancellationToken)
     {
         var book = await GetBookAndCheckIfItExists(request.Id, trackChanges: false);
 
-        _repository.Book.DeleteBook(book);
-        await _repository.SaveAsync();
+        repository.Book.DeleteBook(book);
+        await repository.SaveAsync();
 
         return Unit.Value;
     }

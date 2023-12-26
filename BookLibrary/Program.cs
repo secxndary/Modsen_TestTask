@@ -1,5 +1,4 @@
 using BookLibrary.Extensions;
-using BookLibrary.Middleware;
 using Contracts;
 using MediatR;
 using NLog;
