@@ -10,10 +10,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Contracts\Contracts.csproj", "{176505E8-0817-4F53-AF9A-FB984B2BB665}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{794AF27E-283B-4D1B-82E0-26877F8DEC61}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Contracts", "Service.Contracts\Service.Contracts.csproj", "{EE0DBD29-73B5-4AC3-858D-CF5747A93484}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{95EA7E29-0E64-45E7-B031-BB836E361FB1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerService", "LoggerService\LoggerService.csproj", "{3A3709DA-15FD-40BE-B85D-6EAA275F2DF7}"
@@ -46,14 +42,6 @@ Global
 		{176505E8-0817-4F53-AF9A-FB984B2BB665}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{176505E8-0817-4F53-AF9A-FB984B2BB665}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{176505E8-0817-4F53-AF9A-FB984B2BB665}.Release|Any CPU.Build.0 = Release|Any CPU
-		{794AF27E-283B-4D1B-82E0-26877F8DEC61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{794AF27E-283B-4D1B-82E0-26877F8DEC61}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{794AF27E-283B-4D1B-82E0-26877F8DEC61}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{794AF27E-283B-4D1B-82E0-26877F8DEC61}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EE0DBD29-73B5-4AC3-858D-CF5747A93484}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EE0DBD29-73B5-4AC3-858D-CF5747A93484}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EE0DBD29-73B5-4AC3-858D-CF5747A93484}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EE0DBD29-73B5-4AC3-858D-CF5747A93484}.Release|Any CPU.Build.0 = Release|Any CPU
 		{95EA7E29-0E64-45E7-B031-BB836E361FB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{95EA7E29-0E64-45E7-B031-BB836E361FB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95EA7E29-0E64-45E7-B031-BB836E361FB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
