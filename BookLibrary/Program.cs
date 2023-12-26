@@ -13,6 +13,9 @@ builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.ConfigureLoggerManager();
 builder.Services.ConfigureRepositoryManager();
 
+builder.Services.AddAuthentication();
+builder.Services.ConfigureIdentity();
+
 builder.Services.AddMediatR(typeof(Application.AssemblyReference).Assembly);
 builder.Services.AddAutoMapper(typeof(Program));
 
@@ -41,6 +44,9 @@ else
 
 app.UseHttpsRedirection();
 app.UseCors("CorsPolicy");
-app.MapControllers();
 
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapControllers();
 app.Run();

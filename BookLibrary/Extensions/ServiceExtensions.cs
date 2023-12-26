@@ -1,6 +1,8 @@
 using Contracts;
 using Contracts.Repositories;
+using Entities.Authentication;
 using LoggerService;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Repository;
 
@@ -30,5 +32,18 @@ public static class ServiceExtensions
     public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration) =>
         services.AddDbContext<RepositoryContext>(options =>
             options.UseNpgsql(configuration.GetConnectionString("PostgresConnection")));
+
+    public static void ConfigureIdentity(this IServiceCollection services) => 
+        services.AddIdentity<User, IdentityRole>(opt =>
+            {
+                opt.Password.RequireDigit = true;
+                opt.Password.RequireLowercase = true;
+                opt.Password.RequireUppercase = true;
+                opt.Password.RequireNonAlphanumeric = true;
+                opt.Password.RequiredLength = 10;
+                opt.User.RequireUniqueEmail = true;
+            })
+            .AddEntityFrameworkStores<RepositoryContext>()
+            .AddDefaultTokenProviders();
 
 }

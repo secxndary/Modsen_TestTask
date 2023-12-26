@@ -3,6 +3,7 @@ using Entities.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Repository.Configurations;
+using Repository.Configurations.Identity;
 
 namespace Repository;
 
@@ -16,7 +17,10 @@ public class RepositoryContext(DbContextOptions options) : IdentityDbContext<Use
             .ApplyConfiguration(new BookConfiguration())
             .ApplyConfiguration(new AuthorConfiguration())
             .ApplyConfiguration(new GenreConfiguration())
-            .ApplyConfiguration(new BookGenreConfiguration());
+            .ApplyConfiguration(new BookGenreConfiguration())
+            .ApplyConfiguration(new RoleConfiguration())
+            .ApplyConfiguration(new UserConfiguration())
+            .ApplyConfiguration(new UserRolesConfiguration());
     }
     
     public DbSet<Book>? Books { get; set; }
