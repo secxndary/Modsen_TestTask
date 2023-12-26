@@ -15,13 +15,4 @@
       <PackageReference Include="MediatR" Version="11.1.0" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Commands\Authors\" />
-      <Folder Include="Commands\Genres\" />
-      <Folder Include="Handlers\Authors\" />
-      <Folder Include="Handlers\Genres\" />
-      <Folder Include="Queries\Authors\" />
-      <Folder Include="Queries\Genres\" />
-    </ItemGroup>
-
 </Project>
