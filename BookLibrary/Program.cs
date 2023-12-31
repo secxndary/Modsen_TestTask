@@ -20,6 +20,7 @@ builder.Services.ConfigureIdentity();
 builder.Services.ConfigureJwt(builder.Configuration);
 builder.Services.AddJwtConfiguration(builder.Configuration);
 
+builder.Services.ConfigureSwagger();
 builder.Services.AddMediatR(typeof(Application.AssemblyReference).Assembly);
 builder.Services.AddAutoMapper(typeof(Program));
 
