@@ -1,5 +1,7 @@
 using AutoMapper;
+using Entities.Authentication;
 using Entities.Models;
+using Shared.DataTransferObjects.AuthenticationDtos;
 using Shared.DataTransferObjects.InputDtos;
 using Shared.DataTransferObjects.OutputDtos;
 using Shared.DataTransferObjects.UpdateDtos;
@@ -26,5 +28,7 @@ public class MappingProfile : Profile
         CreateMap<BookForUpdateDto, Book>().ReverseMap();
         CreateMap<AuthorForUpdateDto, Author>().ReverseMap();
         CreateMap<GenreForUpdateDto, Genre>().ReverseMap();
+
+        CreateMap<UserForRegistrationDto, User>();
     }
 }

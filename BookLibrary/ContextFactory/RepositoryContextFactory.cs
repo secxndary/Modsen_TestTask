@@ -1,3 +1,4 @@
+using Entities.Utilities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Repository;
@@ -14,7 +15,7 @@ public class RepositoryContextFactory : IDesignTimeDbContextFactory<RepositoryCo
             .Build();
 
         var builder = new DbContextOptionsBuilder<RepositoryContext>()
-            .UseNpgsql(configuration.GetConnectionString("PostgresConnection"),
+            .UseNpgsql(configuration.GetConnectionString(Constants.PostgresConnection),
                 b => b.MigrationsAssembly("BookLibrary"));
 
         return new RepositoryContext(builder.Options);

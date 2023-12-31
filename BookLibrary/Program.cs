@@ -1,5 +1,7 @@
 using BookLibrary.Extensions;
+using BookLibrary.Presentation.Filters.ActionFilters;
 using Contracts;
+using Entities.Utilities;
 using MediatR;
 using NLog;
 
@@ -15,9 +17,13 @@ builder.Services.ConfigureRepositoryManager();
 
 builder.Services.AddAuthentication();
 builder.Services.ConfigureIdentity();
+builder.Services.ConfigureJwt(builder.Configuration);
+builder.Services.AddJwtConfiguration(builder.Configuration);
 
 builder.Services.AddMediatR(typeof(Application.AssemblyReference).Assembly);
 builder.Services.AddAutoMapper(typeof(Program));
+
+builder.Services.AddScoped<ValidationFilterAttribute>();
 
 builder.Services.AddControllers(config => 
 {
@@ -43,7 +49,7 @@ else
     app.UseHsts();
 
 app.UseHttpsRedirection();
-app.UseCors("CorsPolicy");
+app.UseCors(Constants.CorsPolicy);
 
 app.UseAuthentication();
 app.UseAuthorization();

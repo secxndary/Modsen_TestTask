@@ -1,6 +1,7 @@
 using Application.Commands.Authors;
 using Application.Queries.Authors;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shared.DataTransferObjects.InputDtos;
 using Shared.DataTransferObjects.UpdateDtos;
@@ -8,6 +9,7 @@ using Shared.DataTransferObjects.UpdateDtos;
 namespace BookLibrary.Presentation.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("api/authors")]
 public class AuthorsController(ISender sender) : ControllerBase
 {
