@@ -24,7 +24,5 @@
    setx SECRET "your_jwt_secret_that_is_at_least_32_symbols_long" /M
    ```
 2. (Опционально) Обновить строку подключения в `appsettings.json`. По умолчанию PostgreSQL:
-   ```
-"Server=localhost;Port=5432;Database=book_library;UserId=postgres;Password=1111"
-   ```
+   ```"Server=localhost;Port=5432;Database=book_library;UserId=postgres;Password=1111"```
 3. Провести миграцию (dotnet ef migrations add, dotnet ef database update) из основного проекта `BookLibrary`.
